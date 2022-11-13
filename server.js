@@ -242,7 +242,7 @@ app.locals.students = [
         favoriteFoods: 'Mexican, Italian',
         pets: 'Loki, Sophie, Lazarus',
         location: 'Littleton, CO',
-        image: 'Unavailable'
+        image: ''
     },
     {
         id: 27,
@@ -301,7 +301,7 @@ app.get('/api/v1/students/:id', (request, response) => {
 
 app.post('/api/v1/students', (request, response) => {
     const submittedStudent = request.body
-    for (let requiredParameter of ['id', 'name', 'favoriteBands', 'favoriteFoods', 'pets', 'location', 'image']) {
+    for (let requiredParameter of ['id', 'name', 'favoriteBands', 'favoriteFoods', 'pets', 'location']) {
         if(!submittedStudent[requiredParameter]) {
             return response.status(422).json({ message: `Body is missing a required parameter of ${requiredParameter}.` })
         }
